@@ -1,16 +1,22 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	1.8
+Version:	2.6.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/1.8/%{name}-%{version}.tar.bz2
-# Source0-md5:	28dc31137f8eb983a26b198b3d93e2d4
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
+# Source0-md5:	4799af349c692f6a421d751711a81331
+Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.3.3
-BuildRequires:	libglade2-devel >= 2.0.1
-BuildRequires:	libgnomecanvas-devel >= 2.4.0
+BuildRequires:	GConf2-devel >= 2.5.90
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libglade2-devel >= 2.3.6
+BuildRequires:	libgnomecanvas-devel >= 2.6.0
+BuildRequires:	perl-base
+BuildRequires:	popt-devel
+BuildRequires:	scrollkeeper
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,8 +31,14 @@ skryptów pow³oki.
 
 %prep
 %setup -q
+%patch0 -p1
+
+mv po/{no,nb}.po
 
 %build
+%{__aclocal}
+%{__autoconf}
+%{__automake}
 %configure
 %{__make}
 
@@ -37,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # zenity-0.1.mo but gnome/help/zenity
-%find_lang zenity-0.1 --with-gnome --all-name
+%find_lang %{name}-0.1 --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -45,11 +57,10 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /usr/bin/scrollkeeper-update
 %postun	-p /usr/bin/scrollkeeper-update
 
-%files -f zenity-0.1.lang
+%files -f %{name}-0.1.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/zenity
-%attr(755,root,root) %{_bindir}/gdialog
+%attr(755,root,root) %{_bindir}/*
 %{_omf_dest_dir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*
