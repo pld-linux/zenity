@@ -10,9 +10,13 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.t
 Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.5.90
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libglade2-devel >= 2.3.0
 BuildRequires:	libgnomecanvas-devel >= 2.5.90
+BuildRequires:	perl-base
 BuildRequires:	popt-devel
+BuildRequires:	scrollkeeper
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,7 +36,9 @@ skryptów pow³oki.
 mv po/{no,nb}.po
 
 %build
+%{__aclocal}
 %{__autoconf}
+%{__automake}
 %configure
 %{__make}
 
@@ -43,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # zenity-0.1.mo but gnome/help/zenity
-%find_lang zenity-0.1 --with-gnome --all-name
+%find_lang %{name}-0.1 --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -51,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /usr/bin/scrollkeeper-update
 %postun	-p /usr/bin/scrollkeeper-update
 
-%files -f zenity-0.1.lang
+%files -f %{name}-0.1.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
