@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
 # Source0-md5:	3cd0878b9fe065973c48012199a7c61f
 Patch0:		%{name}-locale-names.patch
-URL:		http://www.gnome.org/
+URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.6.1
 BuildRequires:	autoconf
 BuildRequires:	automake
