@@ -12,7 +12,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.6.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libglade2-devel >= 2.3.6
+BuildRequires:	libglade2-devel >= 1:2.3.6
 BuildRequires:	libgnomecanvas-devel >= 2.6.1
 BuildRequires:	perl-base
 BuildRequires:	popt-devel
