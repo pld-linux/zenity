@@ -11,7 +11,6 @@ URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	libglade2-devel >= 2.0.0
 BuildRequires:	libgnomecanvas-devel >= 2.2.0
-Requires(post):	scrollkeeper
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -38,12 +37,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang zenity-0.1
+# zenity-0.1.mo but gnome/help/zenity
+%find_lang zenity-0.1 --with-gnome --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /usr/bin/scrollkeeper-update
+%post	-p /usr/bin/scrollkeeper-update
+%postun	-p /usr/bin/scrollkeeper-update
 
 %files -f zenity-0.1.lang
 %defattr(644,root,root,755)
@@ -53,4 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_omf_dest_dir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*
-%{_datadir}/gnome/help/%{name}
