@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	1.2
+Version:	1.3
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/1.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	40e9ec123416324bb8abf8ab14d43b46
+# Source0-md5:	b7a0770fd2b9cd6e37480049bafc749c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/1.3/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	libglade2-devel >= 2.0.0
@@ -47,7 +47,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -f zenity-0.1.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/zenity
+#This is wrapper and conflicts with gdialog
+# from gnome-utils, no idea which will be better
+#%attr(755,root,root) %{_bindir}/gdialog
 %{_omf_dest_dir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*
