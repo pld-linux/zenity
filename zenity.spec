@@ -1,16 +1,17 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.5.2
+Version:	2.5.90
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.5/%{name}-%{version}.tar.bz2
-# Source0-md5:	6b894995ecd5ca36df98c35930278b28
+# Source0-md5:	5ad1b4fc94b2f8f3921dd7dd7513388d
+Patch0:		%{name}-locale-names.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.5.0
+BuildRequires:	GConf2-devel >= 2.5.90
 BuildRequires:	libglade2-devel >= 2.3.0
-BuildRequires:	libgnomecanvas-devel >= 2.5.0
+BuildRequires:	libgnomecanvas-devel >= 2.5.90
 BuildRequires:	popt-devel
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -26,8 +27,12 @@ skryptów pow³oki.
 
 %prep
 %setup -q
+%patch0 -p1
+
+mv po/{no,nb}.po
 
 %build
+%{__autoconf}
 %configure
 %{__make}
 
