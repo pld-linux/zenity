@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	1.3
-Release:	3
+Version:	1.4
+Release:	1
 License:	GPL
 Group:		X11/Applications
-# Source0-md5:	b7a0770fd2b9cd6e37480049bafc749c
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/1.3/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/1.4/%{name}-%{version}.tar.bz2
+# Source0-md5:	213bfc04d5ef0e9b685f948f78169850
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.2.0
 BuildRequires:	libglade2-devel >= 2.0.0
@@ -53,3 +53,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_omf_dest_dir}/%{name}
 %{_datadir}/%{name}
 %{_mandir}/man1/*
+%{_datadir}/gnome/help/%{name}
