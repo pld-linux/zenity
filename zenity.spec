@@ -1,19 +1,18 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.6.2
+Version:	2.8.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.6/%{name}-%{version}.tar.bz2
-# Source0-md5:	3cd0878b9fe065973c48012199a7c61f
-Patch0:		%{name}-locale-names.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	a4e64b5791cb038ad9da3b895103c3b1
 URL:		http://freshmeat.net/projects/zenity/
-BuildRequires:	GConf2-devel >= 2.6.1
+BuildRequires:	GConf2-devel >= 2.7.92
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libglade2-devel >= 1:2.3.6
-BuildRequires:	libgnomecanvas-devel >= 2.6.1
+BuildRequires:	libglade2-devel >= 1:2.4.0
+BuildRequires:	libgnomecanvas-devel >= 2.7.92
 BuildRequires:	perl-base
 BuildRequires:	popt-devel
 BuildRequires:	scrollkeeper
@@ -31,9 +30,6 @@ skryptów pow³oki.
 
 %prep
 %setup -q
-%patch0 -p1
-
-mv po/{no,nb}.po
 
 %build
 %{__aclocal}
@@ -47,6 +43,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 # zenity-0.1.mo but gnome/help/zenity
 %find_lang %{name}-0.1 --with-gnome --all-name
