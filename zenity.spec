@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.7.0
+Version:	2.7.90
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	c9e0446185dfd9c79d81ca53d5e940dc
+# Source0-md5:	4048ad1d64d0112e1748e27240c71992
 Patch0:		%{name}-locale-names.patch
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.7.3.1
