@@ -11,6 +11,7 @@ URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.8.0-2
 BuildRequires:	intltool >= 0.33
 BuildRequires:	libglade2-devel >= 1:2.5.1
