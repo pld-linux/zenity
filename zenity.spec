@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.11.1
+Version:	2.11.90
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/zenity/2.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	aa06bc9bfd3783f04cc2ff9a435d0252
+# Source0-md5:	e080304b05902d68214ed51479b699b2
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.10.0
 BuildRequires:	autoconf
@@ -14,6 +14,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.7.3
 BuildRequires:	gnome-common >= 2.8.0-2
+BuildRequires:	gnome-doc-utils >= 0.3.1-2
 BuildRequires:	intltool >= 0.33
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomecanvas-devel >= 2.10.0
@@ -38,7 +39,8 @@ skryptów pow³oki.
 %setup -q
 
 %build
-cp /usr/share/gnome-common/data/omf.make .
+gnome-doc-prepare --copy --force
+%{__gnome_doc_common}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
