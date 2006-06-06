@@ -1,18 +1,18 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.14.1
-Release:	2
+Version:	2.14.2
+Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/zenity/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	2445b652a93581436164cb6ad5e9c36b
+# Source0-md5:	35fe28593effb339e0a6b152eb8050bf
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.8.1
+BuildRequires:	glib2-devel >= 1:2.10.3
 BuildRequires:	gnome-common >= 2.12.0
 BuildRequires:	gnome-doc-utils >= 0.4.0
 BuildRequires:	intltool >= 0.33
