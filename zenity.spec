@@ -1,21 +1,21 @@
 Summary:	The GNOME port of dialog
 Summary(pl):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.14.2
+Version:	2.15.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/zenity/2.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	35fe28593effb339e0a6b152eb8050bf
+Source0:	http://ftp.gnome.org/pub/gnome/sources/zenity/2.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	2ed3ebf98e37f321a9ea0fa86602d849
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.14.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.10.3
+BuildRequires:	glib2-devel >= 1:2.11.2
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gnome-doc-utils >= 0.4.0
-BuildRequires:	intltool >= 0.33
+BuildRequires:	gnome-doc-utils >= 0.6.0
+BuildRequires:	intltool >= 0.35
 BuildRequires:	libglade2-devel >= 1:2.5.1
 BuildRequires:	libgnomecanvas-devel >= 2.14.0
 BuildRequires:	perl-base
@@ -55,7 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ug
 
 # zenity-0.1.mo but gnome/help/zenity
 %find_lang %{name}-0.1 --with-gnome --all-name
