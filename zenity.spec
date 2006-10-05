@@ -55,8 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ug
-
 # zenity-0.1.mo but gnome/help/zenity
 %find_lang %{name}-0.1 --with-gnome --all-name
 
