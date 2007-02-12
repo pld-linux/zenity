@@ -1,5 +1,5 @@
 Summary:	The GNOME port of dialog
-Summary(pl):	Port dialog dla GNOME
+Summary(pl.UTF-8):   Port dialog dla GNOME
 Name:		zenity
 Version:	2.16.3
 Release:	1
@@ -31,10 +31,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 zenity is a rewrite of gdialog, the GNOME port of dialog which allows
 you to display dialog boxes from the commandline and shell scripts.
 
-%description -l pl
-zenity jest kontynuacj± programu gdialog, portu dialog dla GNOME.
-Umoøliwia on wy∂wietlanie okien dialogowych z linii komend i ze
-skryptÛw pow≥oki.
+%description -l pl.UTF-8
+zenity jest kontynuacjƒÖ programu gdialog, portu dialog dla GNOME.
+Umo≈ºliwia on wy≈õwietlanie okien dialogowych z linii komend i ze
+skrypt√≥w pow≈Çoki.
 
 %prep
 %setup -q
