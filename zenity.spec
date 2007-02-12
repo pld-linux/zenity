@@ -1,5 +1,5 @@
 Summary:	The GNOME port of dialog
-Summary(pl.UTF-8):   Port dialog dla GNOME
+Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
 Version:	2.16.3
 Release:	1
