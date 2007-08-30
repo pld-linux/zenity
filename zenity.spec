@@ -1,29 +1,29 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.18.2
+Version:	2.19.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/zenity/2.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	6eb60cebdfddd7f9ad302d0b5477382e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.19/%{name}-%{version}.tar.bz2
+# Source0-md5:	e72dc92169ecdb5b32bf0839b91055b9
 URL:		http://freshmeat.net/projects/zenity/
-BuildRequires:	GConf2-devel >= 2.18.0.1
+BuildRequires:	GConf2-devel >= 2.19.1
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.11
+BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-doc-utils >= 0.10.3
-BuildRequires:	intltool >= 0.35.5
-BuildRequires:	libglade2-devel >= 1:2.6.0
-BuildRequires:	libgnomecanvas-devel >= 2.14.0
+BuildRequires:	gnome-doc-utils >= 0.11.2
+BuildRequires:	intltool >= 0.36.1
+BuildRequires:	libglade2-devel >= 1:2.6.2
+BuildRequires:	libgnomecanvas-devel >= 2.19.2
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomecanvas >= 2.14.0
+Requires:	libgnomecanvas >= 2.19.2
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
