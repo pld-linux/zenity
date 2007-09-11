@@ -71,6 +71,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
-%{_omf_dest_dir}/%{name}
+%dir %{_omf_dest_dir}/zenity
+%{_omf_dest_dir}/zenity/zenity-C.omf
+%lang(bg) %{_omf_dest_dir}/zenity/zenity-bg.omf
+%lang(en_GB) %{_omf_dest_dir}/zenity/zenity-en_GB.omf
+%lang(es) %{_omf_dest_dir}/zenity/zenity-es.omf
+%lang(fr) %{_omf_dest_dir}/zenity/zenity-fr.omf
+%lang(ru) %{_omf_dest_dir}/zenity/zenity-ru.omf
+%lang(sv) %{_omf_dest_dir}/zenity/zenity-sv.omf
+%lang(uk) %{_omf_dest_dir}/zenity/zenity-uk.omf
 %{_datadir}/%{name}
 %{_mandir}/man1/*
