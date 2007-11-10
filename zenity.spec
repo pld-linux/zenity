@@ -2,28 +2,32 @@ Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
 Version:	2.20.0
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	64992cdbb38c9f8ea8cd9ea07c1dfc38
 URL:		http://freshmeat.net/projects/zenity/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.0
-BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-doc-utils >= 0.11.2
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomecanvas-devel >= 2.20.0
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
+# support for --with-omf in find_lang.sh
+BuildRequires:	rpm-build >= 4.4.9-10
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
 Requires(post,postun):	scrollkeeper
-Requires:	libgnomecanvas >= 2.19.2
+Requires:	libgnomecanvas >= 2.20.0
+# sr@Latn vs. sr@latin
+Conflicts:	glibc-misc < 6:2.7
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,8 +59,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# zenity-0.1.mo but gnome/help/zenity
-%find_lang %{name}-0.1 --with-gnome --all-name
+[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
+        mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
+
+%find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,18 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %scrollkeeper_update_postun
 
-%files -f %{name}-0.1.lang
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
 %attr(755,root,root) %{_bindir}/*
-%dir %{_omf_dest_dir}/zenity
-%{_omf_dest_dir}/zenity/zenity-C.omf
-%lang(bg) %{_omf_dest_dir}/zenity/zenity-bg.omf
-%lang(en_GB) %{_omf_dest_dir}/zenity/zenity-en_GB.omf
-%lang(es) %{_omf_dest_dir}/zenity/zenity-es.omf
-%lang(fr) %{_omf_dest_dir}/zenity/zenity-fr.omf
-%lang(ru) %{_omf_dest_dir}/zenity/zenity-ru.omf
-%lang(sv) %{_omf_dest_dir}/zenity/zenity-sv.omf
-%lang(uk) %{_omf_dest_dir}/zenity/zenity-uk.omf
 %{_datadir}/%{name}
 %{_mandir}/man1/*
