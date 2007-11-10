@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 [ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
         mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 
-%find_lang %{name} --with-gnome --with-omf --all-name
+%find_lang %{name} --with-gnome --with-omf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
