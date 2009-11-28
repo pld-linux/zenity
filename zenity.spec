@@ -11,14 +11,16 @@ URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.0
-BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
+BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomecanvas-devel >= 2.20.0
+BuildRequires:	libxml2-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
