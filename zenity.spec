@@ -1,16 +1,15 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.28.0
+Version:	2.30.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	262c476aebbf67a7043cd80c6a03add3
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.30/%{name}-%{version}.tar.bz2
+# Source0-md5:	15ba2f27d5e1a79c996e5e53e16f4380
 URL:		http://freshmeat.net/projects/zenity/
-BuildRequires:	GConf2-devel >= 2.22.0
-BuildRequires:	autoconf
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.0
@@ -18,17 +17,16 @@ BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+2-devel >= 2:2.16.0
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomecanvas-devel >= 2.20.0
+BuildRequires:	libnotify-devel >= 0.4.1
 BuildRequires:	libxml2-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 Requires(post,postun):	scrollkeeper
 Requires:	gtk+2 >= 2:2.16.0
-Requires:	libgnomecanvas >= 2.20.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 Conflicts:	gnome-utils < 2.3.3
@@ -46,6 +44,9 @@ skryptów powłoki.
 %prep
 %setup -q
 
+sed -i -e 's/^en@shaw//' po/LINGUAS
+rm -f po/en@shaw.po
+
 %build
 %{__gnome_doc_prepare}
 %{__intltoolize}
@@ -53,7 +54,8 @@ skryptów powłoki.
 %{__aclocal}
 %{__autoconf}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -61,9 +63,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-        mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
 
 %find_lang %{name} --with-gnome --with-omf
 
@@ -79,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/gdialog
+%attr(755,root,root) %{_bindir}/zenity
+%{_datadir}/zenity
+%{_mandir}/man1/zenity.1*
