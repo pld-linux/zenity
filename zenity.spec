@@ -1,32 +1,31 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
-Version:	2.32.1
+Version:	3.0.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	aa66ec35451b16e424519b4973082170
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.0/%{name}-%{version}.tar.bz2
+# Source0-md5:	6fcf5e9b95322bcae9de566678838653
 URL:		http://freshmeat.net/projects/zenity/
-BuildRequires:	autoconf >= 2.59
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gtk+2-devel >= 2:2.18.0
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libnotify-devel >= 0.4.1
+BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libxml2-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
-BuildRequires:	sed >= 4.0
 Requires(post,postun):	scrollkeeper
-Requires:	gtk+2 >= 2:2.18.0
+Requires:	gtk+3 >= 3.0.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 Conflicts:	gnome-utils < 2.3.3
@@ -43,9 +42,6 @@ skryptów powłoki.
 
 %prep
 %setup -q
-
-sed -i -e 's/^en@shaw//' po/LINGUAS
-rm -f po/en@shaw.po
 
 %build
 %{__gnome_doc_prepare}
