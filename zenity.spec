@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
-Version:	3.0.0
+Version:	3.2.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	6fcf5e9b95322bcae9de566678838653
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.2/%{name}-%{version}.tar.xz
+# Source0-md5:	97822640e869bca81c0c33fd2a2436dc
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -16,6 +16,7 @@ BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	gtk-webkit3-devel >= 1.4.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	libxml2-progs
@@ -24,6 +25,8 @@ BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 Requires(post,postun):	scrollkeeper
 Requires:	gtk+3 >= 3.0.0
 # sr@Latn vs. sr@latin
