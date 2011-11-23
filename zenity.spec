@@ -7,6 +7,7 @@ License:	LGPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/2.32/%{name}-%{version}.tar.bz2
 # Source0-md5:	aa66ec35451b16e424519b4973082170
+Patch0:		%{name}-libnotify.patch
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake >= 1:1.9
@@ -43,6 +44,7 @@ skryptów powłoki.
 
 %prep
 %setup -q
+%patch0 -p0
 
 sed -i -e 's/^en@shaw//' po/LINGUAS
 rm -f po/en@shaw.po
