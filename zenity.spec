@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port dialog dla GNOME
 Name:		zenity
-Version:	3.2.0
+Version:	3.4.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	97822640e869bca81c0c33fd2a2436dc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.4/%{name}-%{version}.tar.xz
+# Source0-md5:	ca34df4496a39c676215562ed5199ef9
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -24,10 +24,8 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	scrollkeeper
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires(post,postun):	scrollkeeper
 Requires:	gtk+3 >= 3.0.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -47,7 +45,6 @@ skryptów powłoki.
 %setup -q
 
 %build
-%{__gnome_doc_prepare}
 %{__intltoolize}
 %{__gnome_doc_common}
 %{__aclocal}
@@ -63,16 +60,10 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%find_lang %{name} --with-gnome --with-omf
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post
-%scrollkeeper_update_post
-
-%postun
-%scrollkeeper_update_postun
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
