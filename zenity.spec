@@ -1,31 +1,29 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.4.0
+Version:	3.6.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	ca34df4496a39c676215562ed5199ef9
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	a9ba39d7286ec172f726c938d911e933
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-webkit3-devel >= 1.4.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libnotify-devel >= 0.6.1
-BuildRequires:	libxml2-progs
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires:	gtk+3 >= 3.0.0
 Requires:	gtk-webkit3 >= 1.4.0
 Requires:	libnotify >= 0.6.1
