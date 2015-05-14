@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.14.0
+Version:	3.16.2
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	144712f5f29a71bf5969525052e75d1c
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.16/%{name}-%{version}.tar.xz
+# Source0-md5:	82953e2a10e5ea64b689870b29fa40a4
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -15,7 +15,6 @@ BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	gtk-webkit3-devel >= 1.4.0
-BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -45,7 +44,6 @@ ze skryptów powłoki.
 %setup -q
 
 %build
-%{__intltoolize}
 %{__gnome_doc_common}
 %{__aclocal}
 %{__autoconf}
