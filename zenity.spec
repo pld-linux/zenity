@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.16.3
+Version:	3.18.1.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	51aeb58684316d9b4c15ca20f8e19a8b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	b1604dd12eefd6f7a0976cfeec3a6690
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
@@ -14,7 +14,7 @@ BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+3-devel >= 3.0.0
-BuildRequires:	gtk-webkit3-devel >= 1.4.0
+BuildRequires:	gtk-webkit4-devel >= 2.8.1
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -24,7 +24,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	gtk+3 >= 3.0.0
-Requires:	gtk-webkit3 >= 1.4.0
+Requires:	gtk-webkit4 >= 2.8.1
 Requires:	libnotify >= 0.6.1
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -44,7 +44,6 @@ ze skryptów powłoki.
 %setup -q
 
 %build
-%{__gnome_doc_common}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
