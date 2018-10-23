@@ -1,12 +1,12 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.24.0
+Version:	3.30.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	c905318c3ca76172d53829ed2471ac53
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	b2180f4ef4fcb2ee90da8c65bd5241af
 URL:		http://freshmeat.net/projects/zenity/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.10
