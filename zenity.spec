@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	webkit		# build without webkit
+
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
@@ -14,7 +18,7 @@ BuildRequires:	gettext-tools >= 0.19.4
 BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gtk+3-devel >= 3.0.0
-BuildRequires:	gtk-webkit4-devel >= 2.8.1
+%{?with_webkit:BuildRequires:	gtk-webkit4-devel >= 2.8.1}
 BuildRequires:	libnotify-devel >= 0.6.1
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -24,7 +28,7 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	gtk+3 >= 3.0.0
-Requires:	gtk-webkit4 >= 2.8.1
+%{?with_webkit:Requires:	gtk-webkit4 >= 2.8.1}
 Requires:	libnotify >= 0.6.1
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
@@ -48,7 +52,8 @@ ze skryptów powłoki.
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-silent-rules
+	--disable-silent-rules \
+	%{__enable_disable webkit webkitgtk}
 %{__make}
 
 %install
