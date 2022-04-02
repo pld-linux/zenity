@@ -1,37 +1,37 @@
 #
 # Conditional build:
-%bcond_without	webkit		# build without webkit
+%bcond_without	libnotify	# desktop notification support
+%bcond_without	webkit		# WebKitGtk support
 
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.32.0
+Version:	3.42.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/zenity/3.32/%{name}-%{version}.tar.xz
-# Source0-md5:	ba2b2a13248773b4ec0fd323d95e6d5a
+Source0:	https://download.gnome.org/sources/zenity/3.42/%{name}-%{version}.tar.xz
+# Source0-md5:	68314e87a303ad0345cc042443f675a9
 URL:		https://wiki.gnome.org/Projects/Zenity
-BuildRequires:	autoconf >= 2.69
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	gettext-tools >= 0.19.4
-BuildRequires:	glib2-devel >= 1:2.14.0
-BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	glib2-devel >= 1:2.43.4
+BuildRequires:	gtk+3-devel >= 3.16.0
 %{?with_webkit:BuildRequires:	gtk-webkit4-devel >= 2.8.1}
-BuildRequires:	libnotify-devel >= 0.6.1
+%{?with_libnotify:BuildRequires:	libnotify-devel >= 0.6.1}
+BuildRequires:	meson >= 0.53.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.527
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires:	gtk+3 >= 3.0.0
+Requires:	glib2 >= 1:2.43.4
+Requires:	gtk+3 >= 3.16.0
 %{?with_webkit:Requires:	gtk-webkit4 >= 2.8.1}
-Requires:	libnotify >= 0.6.1
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
+%{?with_libnotify:Requires:	libnotify >= 0.6.1}
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,19 +48,16 @@ ze skryptów powłoki.
 %setup -q
 
 %build
-%{__aclocal}
-%{__autoconf}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	%{__enable_disable webkit webkitgtk}
-%{__make}
+%meson build \
+	%{?with_libnotify:-Dlibnotify=true} \
+	%{?with_webkit:-Dwebkitgtk=true}
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
