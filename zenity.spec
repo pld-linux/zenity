@@ -6,19 +6,19 @@
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.42.1
+Version:	3.44.1
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/zenity/3.42/%{name}-%{version}.tar.xz
-# Source0-md5:	876ce3ab0304ad7591736238ad97795a
+Source0:	https://download.gnome.org/sources/zenity/3.44/%{name}-%{version}.tar.xz
+# Source0-md5:	ceff286edde1a541a9da1ea0d259bb4e
 URL:		https://wiki.gnome.org/Projects/Zenity
 BuildRequires:	gettext-tools >= 0.19.4
 BuildRequires:	glib2-devel >= 1:2.43.4
 BuildRequires:	gtk+3-devel >= 3.16.0
-%{?with_webkit:BuildRequires:	gtk-webkit4-devel >= 2.8.1}
+%{?with_webkit:BuildRequires:	gtk-webkit4.1-devel >= 2.36}
 %{?with_libnotify:BuildRequires:	libnotify-devel >= 0.6.1}
-BuildRequires:	meson >= 0.53.0
+BuildRequires:	meson >= 0.57.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig
@@ -30,7 +30,7 @@ BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires:	glib2 >= 1:2.43.4
 Requires:	gtk+3 >= 3.16.0
-%{?with_webkit:Requires:	gtk-webkit4 >= 2.8.1}
+%{?with_webkit:Requires:	gtk-webkit4.1 >= 2.36}
 %{?with_libnotify:Requires:	libnotify >= 0.6.1}
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -66,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README THANKS TODO
+%doc AUTHORS NEWS README.md THANKS TODO
 %attr(755,root,root) %{_bindir}/gdialog
 %attr(755,root,root) %{_bindir}/zenity
 %{_datadir}/zenity
