@@ -1,23 +1,21 @@
+# TODO: use gtk4-update-icon-cache
 #
 # Conditional build:
-%bcond_without	libnotify	# desktop notification support
 %bcond_without	webkit		# WebKitGtk support
 
 Summary:	The GNOME port of dialog
 Summary(pl.UTF-8):	Port programu dialog dla GNOME
 Name:		zenity
-Version:	3.44.2
+Version:	4.0.0
 Release:	1
 License:	LGPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/zenity/3.44/%{name}-%{version}.tar.xz
-# Source0-md5:	c7888cde61c97393035fd16b631dbd8e
+Source0:	https://download.gnome.org/sources/zenity/4.0/%{name}-%{version}.tar.xz
+# Source0-md5:	d1b11169eeaf8552bb9b85d154684284
 URL:		https://wiki.gnome.org/Projects/Zenity
 BuildRequires:	gettext-tools >= 0.19.4
-BuildRequires:	glib2-devel >= 1:2.43.4
-BuildRequires:	gtk+3-devel >= 3.16.0
-%{?with_webkit:BuildRequires:	gtk-webkit4.1-devel >= 2.36}
-%{?with_libnotify:BuildRequires:	libnotify-devel >= 0.6.1}
+%{?with_webkit:BuildRequires:	gtk-webkit6-devel >= 2.40}
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	meson >= 0.57.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	perl-base
@@ -28,10 +26,10 @@ BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires:	glib2 >= 1:2.43.4
-Requires:	gtk+3 >= 3.16.0
-%{?with_webkit:Requires:	gtk-webkit4.1 >= 2.36}
-%{?with_libnotify:Requires:	libnotify >= 0.6.1}
+Requires(post,postun):	gtk-update-icon-cache
+%{?with_webkit:Requires:	gtk-webkit6 >= 2.40}
+Requires:	hicolor-icon-theme
+Requires:	libadwaita >= 1.2
 Conflicts:	gnome-utils < 2.3.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,7 +47,6 @@ ze skryptów powłoki.
 
 %build
 %meson build \
-	%{?with_libnotify:-Dlibnotify=true} \
 	%{?with_webkit:-Dwebkitgtk=true}
 
 %ninja_build -C build
@@ -64,10 +61,16 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%update_icon_cache hicolor
+
+%postun
+%update_icon_cache hicolor
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README.md THANKS TODO
-%attr(755,root,root) %{_bindir}/gdialog
+%doc AUTHORS NEWS README.md
 %attr(755,root,root) %{_bindir}/zenity
-%{_datadir}/zenity
+%{_desktopdir}/org.gnome.Zenity.desktop
+%{_iconsdir}/hicolor/48x48/apps/zenity.png
 %{_mandir}/man1/zenity.1*
